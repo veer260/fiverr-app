@@ -18,6 +18,13 @@ const Login = () => {
     password: "",
   };
 
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    },
+  };
+
   const callLoginApi = async (values, bag) => {
     await axios
       .post(
@@ -28,7 +35,8 @@ const Login = () => {
         },
         {
           withCredentials: true,
-        }
+        },
+        config
       )
       .then((res) => {
         console.log(res.data);
